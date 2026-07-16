@@ -1,4 +1,4 @@
-import type { QuiltConfiguration, SolverWorkerResponse } from './models';
+import { MAX_SOLUTIONS, type QuiltConfiguration, type SolverWorkerResponse } from './models';
 import { createId } from './id';
 
 export class SolverClient {
@@ -21,7 +21,7 @@ export class SolverClient {
       worker.addEventListener('error', (event) => {
         this.finish(worker, { kind: 'error', requestId, message: event.message || 'The solver worker failed to start.' });
       }, { once: true });
-      worker.postMessage({ kind: 'solve', requestId, configuration, timeoutMs, maxSolutions: 8 });
+      worker.postMessage({ kind: 'solve', requestId, configuration, timeoutMs, maxSolutions: MAX_SOLUTIONS });
     });
   }
 

@@ -1,6 +1,6 @@
 export const CONFIG_VERSION = 1 as const;
 export const MAX_GRID_DIMENSION = 20;
-export const MAX_SOLUTIONS = 8;
+export const MAX_SOLUTIONS = 16;
 
 export interface SquareType {
   id: string;
