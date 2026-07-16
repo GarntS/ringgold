@@ -1,0 +1,12 @@
+{
+  "name": "Quilt Layout Solver",
+  "short_name": "Quilt Solver",
+  "description": "Create exact-count nonadjacent quilt square layouts offline.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f3eb",
+  "theme_color": "#3f6b57",
+  "icons": [
+    { "src": "/icons/quilt.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
