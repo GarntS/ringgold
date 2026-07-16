@@ -9,13 +9,13 @@ nix develop --command npm run dev
 
 ## GitHub Pages
 
-The production build is fully static and writes to `doc/` for GitHub Pages:
+The production build is fully static and writes to `docs/` for GitHub Pages:
 
 ```bash
 nix develop --command npm run build
 ```
 
-Commit `doc/`, then configure GitHub Pages to deploy from the repository branch's `/doc` directory. Asset, service-worker, manifest, and Z3 paths are relative so they also work for a project page at `https://<account>.github.io/<repository>/`.
+Commit `docs/`, then configure GitHub Pages to deploy from the repository branch's `/docs` directory. Asset, service-worker, manifest, and Z3 paths are relative so they also work for a project page at `https://<account>.github.io/<repository>/`.
 
 ## Testing on a phone or tablet
 

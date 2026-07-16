@@ -16,6 +16,6 @@ export default defineConfig({
   server: { https: localHttps, headers: isolationHeaders },
   preview: { https: localHttps, headers: isolationHeaders },
   base: './',
-  build: { target: 'es2022', outDir: 'doc' },
+  build: { target: 'es2022', outDir: 'docs' },
   test: { environment: 'node', include: ['src/**/*.test.ts'] },
 });

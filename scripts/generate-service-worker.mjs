@@ -1,7 +1,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 
-const output = 'doc';
+const output = 'docs';
 async function files(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
   const nested = await Promise.all(entries.map(async (entry) => entry.isDirectory()
