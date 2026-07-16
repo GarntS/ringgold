@@ -7,6 +7,16 @@ nix develop --command npm install
 nix develop --command npm run dev
 ```
 
+## GitHub Pages
+
+The production build is fully static and writes to `doc/` for GitHub Pages:
+
+```bash
+nix develop --command npm run build
+```
+
+Commit `doc/`, then configure GitHub Pages to deploy from the repository branch's `/doc` directory. Asset, service-worker, manifest, and Z3 paths are relative so they also work for a project page at `https://<account>.github.io/<repository>/`.
+
 ## Testing on a phone or tablet
 
 PWA installation and the threaded Z3 solver require HTTPS. Generate a trusted local certificate and serve on the LAN:

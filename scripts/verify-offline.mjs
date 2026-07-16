@@ -1,9 +1,9 @@
 import { readFile } from 'node:fs/promises';
 
-const serviceWorker = await readFile('dist/sw.js', 'utf8');
+const serviceWorker = await readFile('doc/sw.js', 'utf8');
 for (const asset of ['index.html', 'solver.worker-', 'solver/z3-built.js', 'solver/z3-built.wasm']) {
   if (!serviceWorker.includes(asset)) throw new Error(`Offline precache is missing ${asset}`);
 }
-const index = await readFile('dist/index.html', 'utf8');
+const index = await readFile('doc/index.html', 'utf8');
 if (/https?:\/\//.test(index)) throw new Error('The application shell has a remote network dependency.');
 console.log('Offline build verification passed: shell, worker, Z3 glue, and WASM are precached.');

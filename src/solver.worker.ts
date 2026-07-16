@@ -23,7 +23,8 @@ async function getApi(): Promise<Z3Api> {
     if (typeof SharedArrayBuffer === 'undefined') throw new Error('This browser does not provide SharedArrayBuffer, which the bundled Z3 solver requires.');
     // z3-built.js is Emscripten's classic-worker glue. Evaluate it in the worker
     // global scope so this module worker can still expose its `initZ3` factory.
-    const glue = await fetch('/solver/z3-built.js').then((response) => {
+    const solverAsset = new URL('../solver/z3-built.js', self.location.href).href;
+    const glue = await fetch(solverAsset).then((response) => {
       if (!response.ok) throw new Error(`Unable to load Z3 glue (${response.status}).`);
       return response.text();
     });
@@ -31,8 +32,8 @@ async function getApi(): Promise<Z3Api> {
     type Z3Options = { mainScriptUrlOrBlob: string; locateFile: (path: string) => string };
     const initializeZ3 = (self as typeof self & { initZ3: (options: Z3Options) => unknown }).initZ3;
     (self as typeof self & { initZ3: () => unknown }).initZ3 = () => initializeZ3({
-      mainScriptUrlOrBlob: '/solver/z3-built.js',
-      locateFile: (path) => `/solver/${path}`,
+      mainScriptUrlOrBlob: solverAsset,
+      locateFile: (path) => new URL(`../solver/${path}`, self.location.href).href,
     });
     api = await within(init(), 20_000, 'Z3 initialization timed out. This browser may not support the threaded WebAssembly solver.');
   }

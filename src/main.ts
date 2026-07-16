@@ -297,7 +297,7 @@ app.addEventListener('click', async (event) => {
 });
 
 if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-  void navigator.serviceWorker.register('/sw.js');
+  void navigator.serviceWorker.register('./sw.js');
 }
 
 render();

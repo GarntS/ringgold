@@ -1,5 +1,5 @@
 const CACHE = 'quilt-solver-0.1.0';
-const PRECACHE = ["/","/assets/index-5MVYInlL.css","/assets/index-B6X8OxnB.js","/assets/solver.worker-CYaU168a.js","/coi.js","/icons/quilt.svg","/index.html","/manifest.webmanifest","/solver/z3-built.js","/solver/z3-built.wasm"];
+const PRECACHE = ["./","./assets/index-5MVYInlL.css","./assets/index-XTNmGnaJ.js","./assets/solver.worker-CBSqmEOD.js","./coi.js","./icons/quilt.svg","./index.html","./manifest.webmanifest","./solver/z3-built.js","./solver/z3-built.wasm"];
 const isolated = (response) => {
   const headers = new Headers(response.headers);
   headers.set('Cross-Origin-Embedder-Policy', 'require-corp');

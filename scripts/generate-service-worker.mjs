@@ -1,7 +1,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 
-const output = 'dist';
+const output = 'doc';
 async function files(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
   const nested = await Promise.all(entries.map(async (entry) => entry.isDirectory()
@@ -11,8 +11,8 @@ async function files(directory) {
 }
 const assets = (await files(output))
   .filter((file) => !file.endsWith('sw.js'))
-  .map((file) => `/${relative(output, file).replaceAll('\\', '/')}`);
-const precache = [...new Set(['/', ...assets])];
+  .map((file) => `./${relative(output, file).replaceAll('\\', '/')}`);
+const precache = [...new Set(['./', ...assets])];
 const version = await readFile('package.json', 'utf8').then((text) => JSON.parse(text).version);
 const source = `const CACHE = 'quilt-solver-${version}';
 const PRECACHE = ${JSON.stringify(precache)};
